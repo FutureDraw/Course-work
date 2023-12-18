@@ -23,6 +23,21 @@ class VideoConverterApp:
         self.browse_button = tk.Button(master, text="Обзор", bg="white", command=self.browse_file)
         self.browse_button.grid(row=0, column=2, padx=10, pady=10, sticky="e")
 
+        self.codec_label = tk.Label(master, text="Выберите кодек:", bg="#333333", fg="white")
+        self.codec_label.grid(row=1, column=0, padx=1, pady=5, sticky="w")
+
+        self.codecs = ["mp4", "avi", "mov", "flv"]
+        self.codec_var = tk.StringVar(master)
+        self.codec_var.set(self.codecs[0])
+
+        self.codec_menu = ttk.Combobox(master, values=self.codecs, textvariable=self.codec_var, state="readonly", justify="center")
+        self.codec_menu.set(self.codecs[0])
+
+        self.codec_menu.grid(row=1, column=1, padx=0, pady=0, sticky="ew")
+
+        self.convert_button = tk.Button(master, text="Конвертировать", bg="white", command=self.convert_video)
+        self.convert_button.grid(row=2, column=0, columnspan=3, padx=2, pady=10, sticky="nsew")
+
     def browse_file(self):
         file_path = filedialog.askopenfilename(
             filetypes=[("Video files", "*.mp4;*.avi;*.mpeg;*.mov;*.flv;*.webm;*.mkv")])
