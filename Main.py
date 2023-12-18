@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 from tkinter import ttk
 
 class VideoConverterApp:
@@ -17,8 +18,12 @@ class VideoConverterApp:
     def browse_file(self):
         file_path = filedialog.askopenfilename(
             filetypes=[("Video files", "*.mp4;*.avi;*.mpeg;*.mov;*.flv;*.webm;*.mkv")])
-        self.source_file_entry.delete(0, tk.END)
-        self.source_file_entry.insert(0, file_path)
+
+        if file_path:
+            self.source_file_entry.delete(0, tk.END)
+            self.source_file_entry.insert(0, file_path)
+        else:
+            messagebox.showinfo("Информация", "Выбор файла отменен.")
 
 if __name__ == "__main__":
     root = tk.Tk()
