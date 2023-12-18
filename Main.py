@@ -13,3 +13,8 @@ class VideoConverterApp:
 
         self.browse_button = tk.Button(master, text="Обзор", bg="white", command=self.browse_file)
         self.browse_button.grid(row=0, column=2, padx=10, pady=10, sticky="e")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = VideoConverterApp(root)
+    root.mainloop()
